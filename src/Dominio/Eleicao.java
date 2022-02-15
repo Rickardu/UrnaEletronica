@@ -10,6 +10,8 @@ public class Eleicao {
 	ArrayList<Secao> secoes;
 	ArrayList<Urna> urnas;
 	ArrayList<Voto> votos;
+	int mes;
+	int dia;
 	
 
 }
