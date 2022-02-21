@@ -24,6 +24,7 @@ public class Urna {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	//TESTE
 	
 	
 
