@@ -3,7 +3,7 @@ package Dominio.enum_;
  
 
 public enum VotoEnum {
-	Nulo("Nulo"),Branco("Branco");
+	Nulo("Nulo"),Branco("Branco"),VALIDO("VALIDO"),;
 	private String descricao;
 
 	VotoEnum(String descricao) {
