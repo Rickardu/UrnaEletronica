@@ -14,12 +14,13 @@ public class Cidadao {
 	
 
 	public Cidadao(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
-			String numReservista) {		 
+			String numReservista) {	
+		 
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
-		endereco = endereco;
-		cpf = cpf;
-		rg = rg;
+		this.endereco = endereco;
+		this.cpf = cpf;
+		 this.rg = rg;
 		this.sexo = sexo;
 		this.numReservista = numReservista;
 	}
@@ -27,9 +28,9 @@ public class Cidadao {
 	public Cidadao(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo			 ) {		 
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
-		endereco = endereco;
-		cpf = cpf;
-		rg = rg;
+		this.endereco = endereco;
+		this.cpf = cpf;
+		this.rg = rg;
 		this.sexo = sexo;		 
 	}
 	public String getNome() {
@@ -48,19 +49,19 @@ public class Cidadao {
 		return endereco;
 	}
 	public void setEndereco(Endereco endereco) {
-		endereco = endereco;
+		this.endereco = endereco;
 	}
 	public String getCpf() {
 		return cpf;
 	}
 	public void setCpf(String cpf) {
-		cpf = cpf;
+		this.cpf = cpf;
 	}
 	public String getRg() {
 		return rg;
 	}
 	public void setRg(String rg) {
-		rg = rg;
+		this.rg = rg;
 	}
 	public SexoEnum getSexo() {
 		return sexo;
