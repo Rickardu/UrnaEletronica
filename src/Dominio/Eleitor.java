@@ -1,68 +1,54 @@
 package Dominio;
 
-public class Eleitor {
-	String nome;
-	String dataNascimento;
-	String Endereco;
-	String cpf;
-	String rg;
-	String titulo;
-	boolean situacao;
-	String Zona;
-	String Secao;
-	public String getNome() {
-		return nome;
+import Dominio.enum_.SexoEnum;
+
+public class Eleitor extends Cidadao {
+
+	private String titulo;
+	private boolean situacao;
+	private EnderecoEleitoral eleitoral;
+
+	public Eleitor(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+			String numReservista, String titulo, boolean situacao, Zona zona, Secao secao,
+			EnderecoEleitoral eleitoral) {
+		super(nome, dataNascimento, endereco, cpf, rg, sexo, numReservista);
+		this.titulo = titulo;
+		this.situacao = situacao;
+		this.eleitoral = eleitoral;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public Eleitor(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+			String titulo, boolean situacao, Zona zona, Secao secao,
+			EnderecoEleitoral eleitoral) {
+		super(nome, dataNascimento, endereco, cpf, rg, sexo);
+		this.titulo = titulo;
+		this.situacao = situacao;
+		this.eleitoral = eleitoral;
 	}
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-	public String getEndereco() {
-		return Endereco;
-	}
-	public void setEndereco(String endereco) {
-		Endereco = endereco;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getRg() {
-		return rg;
-	}
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 	public boolean isSituacao() {
 		return situacao;
 	}
+
 	public void setSituacao(boolean situacao) {
 		this.situacao = situacao;
 	}
-	public String getZona() {
-		return Zona;
+
+	public EnderecoEleitoral getEleitoral() {
+		return eleitoral;
 	}
-	public void setZona(String zona) {
-		Zona = zona;
-	}
-	public String getSecao() {
-		return Secao;
-	}
-	public void setSecao(String secao) {
-		Secao = secao;
+
+	public void setEleitoral(EnderecoEleitoral eleitoral) {
+		this.eleitoral = eleitoral;
 	}
 	
+
 }

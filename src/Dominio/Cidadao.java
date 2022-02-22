@@ -1,11 +1,37 @@
 package Dominio;
 
+import Dominio.enum_.SexoEnum;
+
 public class Cidadao {
-	String nome;
-	String dataNascimento;
-	String Endereco;
-	String Cpf;
-	String Rg;
+	private String nome;
+	private String dataNascimento;
+	private Endereco endereco;
+	private String cpf;
+	private String rg;
+	private SexoEnum sexo;
+	private String numReservista;
+	
+	
+
+	public Cidadao(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+			String numReservista) {		 
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		endereco = endereco;
+		cpf = cpf;
+		rg = rg;
+		this.sexo = sexo;
+		this.numReservista = numReservista;
+	}
+	
+	public Cidadao(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo			 ) {		 
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		endereco = endereco;
+		cpf = cpf;
+		rg = rg;
+		this.sexo = sexo;		 
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -18,23 +44,36 @@ public class Cidadao {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public String getEndereco() {
-		return Endereco;
+	public Endereco getEndereco() {
+		return endereco;
 	}
-	public void setEndereco(String endereco) {
-		Endereco = endereco;
+	public void setEndereco(Endereco endereco) {
+		endereco = endereco;
 	}
 	public String getCpf() {
-		return Cpf;
+		return cpf;
 	}
 	public void setCpf(String cpf) {
-		Cpf = cpf;
+		cpf = cpf;
 	}
 	public String getRg() {
-		return Rg;
+		return rg;
 	}
 	public void setRg(String rg) {
-		Rg = rg;
+		rg = rg;
 	}
+	public SexoEnum getSexo() {
+		return sexo;
+	}
+	public void setSexo(SexoEnum sexo) {
+		this.sexo = sexo;
+	}
+	public String getNumReservista() {
+		return numReservista;
+	}
+	public void setNumReservista(String numReservista) {
+		this.numReservista = numReservista;
+	}
+	
 	
 }
