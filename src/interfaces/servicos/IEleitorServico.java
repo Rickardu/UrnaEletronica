@@ -3,6 +3,7 @@ package interfaces.servicos;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Dominio.Candidato;
 import Dominio.Eleitor;
 import Dominio.Endereco;
 import Dominio.EnderecoEleitoral;
@@ -22,6 +23,8 @@ public interface IEleitorServico {
 	public Eleitor pesquisaPorRg(String rg);
 	public ArrayList<Eleitor> pesquisarPorZonaSecao(String zona, String secao);
 	public void suspender(String numTitulo);
+	
+ 
 	
 	
 

@@ -10,7 +10,8 @@ public class BaseRepositorio<E> implements  IBaseRepositorio<E> {
 	@Override
 	public void salvar(E e) {
 		// TODO Auto-generated method stub
-		this.bdE.add(e);	
+		if(this.bdE!=null)
+			this.bdE.add(e);	
 	}
 
 	@Override
