@@ -12,6 +12,7 @@ public class Main {
 	public static EleitorServico  eleitorServico=null;
     public static void main(String[]args){
     	eleitorServico=new EleitorServico(eleitoresRepositorio);
+    	int x=6;
     	 
         
     }
