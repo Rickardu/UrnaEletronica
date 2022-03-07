@@ -1,5 +1,7 @@
 package Dominio;
 
+import java.util.Date;
+
 import Dominio.enum_.SexoEnum;
 
 public class Eleitor extends Cidadao {
@@ -7,8 +9,8 @@ public class Eleitor extends Cidadao {
 	private String titulo;
 	private boolean situacao;
 	private EnderecoEleitoral eleitoral;
-
-	public Eleitor(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+	public Eleitor() {}
+	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String numReservista, String titulo, boolean situacao, Zona zona, Secao secao,
 			EnderecoEleitoral eleitoral) {
 		super(nome, dataNascimento, endereco, cpf, rg, sexo, numReservista);
@@ -17,7 +19,7 @@ public class Eleitor extends Cidadao {
 		this.eleitoral = eleitoral;
 	}
 
-	public Eleitor(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String titulo, boolean situacao, Zona zona, Secao secao,
 			EnderecoEleitoral eleitoral) {
 		super(nome, dataNascimento, endereco, cpf, rg, sexo);

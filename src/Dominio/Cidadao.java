@@ -1,10 +1,12 @@
 package Dominio;
 
+import java.util.Date;
+
 import Dominio.enum_.SexoEnum;
 
 public class Cidadao {
 	private String nome;
-	private String dataNascimento;
+	private Date dataNascimento;
 	private Endereco endereco;
 	private String cpf;
 	private String rg;
@@ -12,8 +14,8 @@ public class Cidadao {
 	private String numReservista;
 	
 	
-
-	public Cidadao(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+	public Cidadao() {}
+	public Cidadao(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String numReservista) {	
 		 
 		this.nome = nome;
@@ -25,7 +27,7 @@ public class Cidadao {
 		this.numReservista = numReservista;
 	}
 	
-	public Cidadao(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo			 ) {		 
+	public Cidadao(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo			 ) {		 
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;
@@ -39,10 +41,10 @@ public class Cidadao {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	public Endereco getEndereco() {

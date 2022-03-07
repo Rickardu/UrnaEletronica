@@ -1,6 +1,7 @@
 package Dominio;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import Dominio.enum_.SexoEnum;
 
@@ -16,7 +17,7 @@ public class Candidato  extends  Eleitor{
 	 
  
 	 
-	public Candidato(String nome, String dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+	public Candidato(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String numReservista, String titulo, boolean situacao, Zona zona, Secao secao, EnderecoEleitoral eleitoral,
 			String cargo, Eleicao eleicao, Partido partido, ArrayList<Partido> coligacao, int quantidadeVotos,
 			boolean situacao2) {
