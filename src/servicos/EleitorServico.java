@@ -29,7 +29,7 @@ public class EleitorServico implements IBaseServico<Eleitor>,IEleitorServico {
 		Eleitor eleitor=new Eleitor(nome, dataNascimento, endereco, cpf, rg, sexo, titulo, situacao, zona, secao, eleitoral);
 		this.eleitorRepositorio.salvar(eleitor);		
 	}
-
+//dfdsfsdf
 	@Override
 	public void alterar(Eleitor eleitorAtual, String nome, Date dataNascimento, Endereco endereco, String cpf,
 			String rg, SexoEnum sexo, String numReservista, String titulo, boolean situacao, Zona zona, Secao secao,
