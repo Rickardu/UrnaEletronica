@@ -10,7 +10,7 @@ public class DatetimeExtensions
     {
     	try {
     		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-        	Date data = formato.parse("23/11/2015");
+        	Date data = formato.parse(date);
             return data; 
 			
 		} catch (Exception e) {

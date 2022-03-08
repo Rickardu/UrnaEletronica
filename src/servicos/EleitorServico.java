@@ -16,6 +16,7 @@ import repositorios.EleitorRepositorio;
 public class EleitorServico implements IBaseServico<Eleitor>,IEleitorServico {
 	private EleitorRepositorio eleitorRepositorio;
 	
+	
 	public EleitorServico(EleitorRepositorio eleitorRepositorio) {
 		this.eleitorRepositorio=eleitorRepositorio;
 	}

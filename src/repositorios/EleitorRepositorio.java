@@ -62,7 +62,7 @@ public class EleitorRepositorio implements IBaseRepositorio<Eleitor>,IEleitorRes
 	@Override
 	public ArrayList<Eleitor> listarTodos() {
 		// TODO Auto-generated method stub
-		return null;
+		return bdEleitores;
 	}
 	 
 
