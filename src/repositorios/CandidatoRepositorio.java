@@ -6,6 +6,12 @@ import interfaces.repositorios.IBaseRepositorio;
 import Dominio.Candidato;
 import Dominio.Eleitor;
 public class CandidatoRepositorio extends BaseRepositorio<Candidato>    {
+	
+	public CandidatoRepositorio(ArrayList<Candidato> bdE) {
+		super(bdE);
+		// TODO Auto-generated constructor stub
+	}
+
 	private ArrayList<Candidato> bdCandidatos;
 	@Override
 	public void salvar(Candidato e) {
@@ -18,7 +24,7 @@ public class CandidatoRepositorio extends BaseRepositorio<Candidato>    {
 	public void alterar(Candidato e) {
 		// TODO Auto-generated method stub
 		for(int i =0; i<bdCandidatos.size();i++) {
-			if(bdCandidatos.get(0).getCpf().equals(e.getCpf()))
+			if(bdCandidatos.get(0).getRegistro().equals(e.getRegistro()))
 				bdCandidatos.set(i, e);
 				break;
 		}
@@ -27,14 +33,13 @@ public class CandidatoRepositorio extends BaseRepositorio<Candidato>    {
 
 	@Override
 	public void remover(Candidato e) {
-		// TODO Auto-generated method stub
+		bdCandidatos.remove(e);
 		
 	}
 
 	@Override
-	public ArrayList<Candidato> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Candidato> listarTodos() {		 
+		return bdCandidatos;
 	}
 
 }

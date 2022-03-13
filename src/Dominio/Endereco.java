@@ -10,6 +10,7 @@ public class Endereco {
 	private String logradouro;
 	private String pontoReferencia;
 	
+	public Endereco() {}
 	public Endereco(String pais, String estado, String cidade, String bairro, String cep, String numero,
 			String logradouro, String pontoReferencia) {
 		super();

@@ -64,6 +64,7 @@ public class EleitorRepositorio implements IBaseRepositorio<Eleitor>,IEleitorRes
 		// TODO Auto-generated method stub
 		return bdEleitores;
 	}
+	
 	 
 
 }

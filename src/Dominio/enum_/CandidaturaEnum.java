@@ -1,10 +1,11 @@
 package Dominio.enum_;
 
-public enum SexoEnum {
-	Masculino("Masculino"),Feminino("Feminino"),Outros("Outros");
+public enum CandidaturaEnum {
+	andamento("Em andamenmto"),ativa("Ativa"),
+	inativa("Inativa"),suspensa("Suspensa") ;
 	private String descricao;
 
-	SexoEnum(String descricao) {
+	CandidaturaEnum(String descricao) {
 		this.descricao = descricao;
 	}
 
@@ -17,10 +18,10 @@ public enum SexoEnum {
 		return this.getDescricao();
 	}
 
-	public static SexoEnum getEnum(String value) {
+	public static CandidaturaEnum getEnum(String value) {
 		if (value == null)
 			throw new IllegalArgumentException();
-		for (SexoEnum v : values())
+		for (CandidaturaEnum v : values())
 			if (value.equalsIgnoreCase(v.getDescricao()))
 				return v;
 		throw new IllegalArgumentException();

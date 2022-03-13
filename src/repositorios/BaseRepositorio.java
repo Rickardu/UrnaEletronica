@@ -6,7 +6,11 @@ import Dominio.Candidato;
 import interfaces.repositorios.IBaseRepositorio;
 
 public class BaseRepositorio<E> implements  IBaseRepositorio<E> {
-	private ArrayList<E> bdE;
+	public ArrayList<E> bdE;
+	
+	public BaseRepositorio(ArrayList<E> bdE){
+		this.bdE=bdE;
+	}
 	@Override
 	public void salvar(E e) {
 		// TODO Auto-generated method stub

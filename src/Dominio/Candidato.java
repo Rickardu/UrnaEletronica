@@ -3,32 +3,34 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Dominio.enum_.CandidaturaEnum;
 import Dominio.enum_.SexoEnum;
 
-public class Candidato  extends  Eleitor{
+public class Candidato    {
 	 
+	private String registro;
+	private String numero;
+	private Eleitor eleitor;
 	private String cargo;
 	private Eleicao eleicao;
 	private  Partido partido;
 	private ArrayList<Partido> coligacao;
 	private int quantidadeVotos;
-	private boolean situacao;
-	
-	 
+	private CandidaturaEnum situacao; 
  
-	 
-	public Candidato(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
-			String numReservista, String titulo, boolean situacao, Zona zona, Secao secao, EnderecoEleitoral eleitoral,
-			String cargo, Eleicao eleicao, Partido partido, ArrayList<Partido> coligacao, int quantidadeVotos,
-			boolean situacao2) {
-		super(nome, dataNascimento, endereco, cpf, rg, sexo, numReservista, titulo, situacao, zona, secao, eleitoral);
+	public Candidato(String registro, String numero, Eleitor eleitor, String cargo, Eleicao eleicao, Partido partido,
+			ArrayList<Partido> coligacao, int quantidadeVotos, CandidaturaEnum situacao) {		 
+		this.registro = registro;
+		this.numero = numero;
+		this.eleitor = eleitor;
 		this.cargo = cargo;
 		this.eleicao = eleicao;
 		this.partido = partido;
 		this.coligacao = coligacao;
 		this.quantidadeVotos = quantidadeVotos;
-		situacao = situacao2;
+		this.situacao = situacao;
 	}
+	
 	public String getCargo() {
 		return cargo;
 	}
@@ -36,10 +38,10 @@ public class Candidato  extends  Eleitor{
 		this.cargo = cargo;
 	}
 	 
-	public boolean isSituacao() {
+	public CandidaturaEnum isSituacao() {
 		return situacao;
 	}
-	public void setSituacao(boolean situacao) {
+	public void setSituacao(CandidaturaEnum situacao) {
 		this.situacao = situacao;
 	}
 	public Eleicao getEleicao() {
@@ -65,6 +67,34 @@ public class Candidato  extends  Eleitor{
 	}
 	public void setQuantidadeVotos(int quantidadeVotos) {
 		this.quantidadeVotos = quantidadeVotos;
+	}
+
+	public String getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(String registro) {
+		this.registro = registro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public Eleitor getEleitor() {
+		return eleitor;
+	}
+
+	public void setEleitor(Eleitor eleitor) {
+		this.eleitor = eleitor;
+	}
+
+	public CandidaturaEnum getSituacao() {
+		return situacao;
 	}
 	
 	

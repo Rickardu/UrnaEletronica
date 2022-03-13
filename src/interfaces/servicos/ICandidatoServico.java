@@ -12,5 +12,6 @@ public interface ICandidatoServico {
 	public ArrayList<Candidato> listarTodos();*/
 	public void filiarPartido(Candidato candidato);
 	public void coligar(Candidato candidato, ArrayList<Partido> partidosColigados);
+	public void imprimirCanditados();
  
 }

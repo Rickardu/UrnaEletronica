@@ -8,6 +8,7 @@ import Dominio.Endereco;
 import Dominio.EnderecoEleitoral;
 import Dominio.Secao;
 import Dominio.Zona;
+import Dominio.enum_.EleitorSituacaoEnum;
 import Dominio.enum_.SexoEnum;
 import interfaces.servicos.IBaseServico;
 import interfaces.servicos.IEleitorServico;
@@ -23,19 +24,18 @@ public class EleitorServico implements IBaseServico<Eleitor>,IEleitorServico {
 
 	@Override
 	public void cadastrar(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
-			String numReservista, String titulo, boolean situacao, Zona zona, Secao secao,
-			EnderecoEleitoral eleitoral) {
+			String numReservista, String titulo, EleitorSituacaoEnum situacao,EnderecoEleitoral eleitoral) {
 		// TODO Auto-generated method stub+
 		
-		Eleitor eleitor=new Eleitor(nome, dataNascimento, endereco, cpf, rg, sexo, titulo, situacao, zona, secao, eleitoral);
+		Eleitor eleitor=new Eleitor(nome, dataNascimento, endereco, cpf, rg, sexo, titulo, situacao,eleitoral);
 		this.eleitorRepositorio.salvar(eleitor);		
 	}
-//dfdsfsdf
+ 
 	@Override
 	public void alterar(Eleitor eleitorAtual, String nome, Date dataNascimento, Endereco endereco, String cpf,
-			String rg, SexoEnum sexo, String numReservista, String titulo, boolean situacao, Zona zona, Secao secao,
+			String rg, SexoEnum sexo, String numReservista, String titulo, EleitorSituacaoEnum situacao,
 			EnderecoEleitoral eleitoral) {
-		Eleitor eleitor=new Eleitor(nome, dataNascimento, endereco, cpf, rg, sexo, titulo, situacao, zona, secao, eleitoral);
+		Eleitor eleitor=new Eleitor(nome, dataNascimento, endereco, cpf, rg, sexo, titulo, situacao, eleitoral);
 		this.eleitorRepositorio.alterar(eleitor);	
 	}
 
@@ -81,6 +81,27 @@ public class EleitorServico implements IBaseServico<Eleitor>,IEleitorServico {
 	public ArrayList<Eleitor> buscarTodos() {
 		return this.eleitorRepositorio.listarTodos();
 		
+	}
+
+	@Override
+	public void imprimirEleitores() {
+		 for (Eleitor eleitor : buscarTodos()) {
+			 System.out.println(">>>>>>>>>>>>>>>-------------------------------<<<<<<<<<<<<<" );
+			 System.out.println(">>>Nome:"+eleitor.getNome());
+			 System.out.println(">>>Cpf:"+eleitor.getCpf());
+			 System.out.println(">>>Titulo:"+eleitor.getTitulo());
+			 System.out.println(">>>Situacao:"+eleitor.getSituacao().getDescricao());
+			 System.out.println(">>>"+eleitor.getEleitoral().getEndereco().getEstado());
+			 System.out.println(">>>"+eleitor.getEleitoral().getEndereco().getCidade());
+			 System.out.println(">>>"+eleitor.getEleitoral().getZona());
+			 System.out.println(">>>"+eleitor.getEleitoral().getSecao());			 
+			 System.out.println(">>>>>>>>>>>>>>>-------------------------------<<<<<<<<<<<<<" );
+			
+		}
+		
+	}
+	public void metodoPrivado(){
+		System.out.println("METODO FORA DA INTEFACE DE SERVICO"); 
 	}
 	
 	 

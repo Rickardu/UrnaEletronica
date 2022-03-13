@@ -4,7 +4,7 @@ import java.util.Date;
 
 import Dominio.enum_.SexoEnum;
 
-public class Cidadao {
+public class PessoaFisica {
 	private String nome;
 	private Date dataNascimento;
 	private Endereco endereco;
@@ -14,8 +14,8 @@ public class Cidadao {
 	private String numReservista;
 	
 	
-	public Cidadao() {}
-	public Cidadao(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+	public PessoaFisica() {}
+	public PessoaFisica(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String numReservista) {	
 		 
 		this.nome = nome;
@@ -27,7 +27,7 @@ public class Cidadao {
 		this.numReservista = numReservista;
 	}
 	
-	public Cidadao(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo			 ) {		 
+	public PessoaFisica(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo			 ) {		 
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;

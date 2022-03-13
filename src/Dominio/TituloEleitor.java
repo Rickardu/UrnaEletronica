@@ -5,7 +5,7 @@ import java.util.Date;
 public class TituloEleitor {
 	public String numero;
 	public Date dataCriacao;
-	public Cidadao cidadao;
+	public PessoaFisica cidadao;
 	public Zona zona;
 	public Secao secao;
 	public boolean Status;
@@ -21,10 +21,10 @@ public class TituloEleitor {
 	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	public Cidadao getCidadao() {
+	public PessoaFisica getCidadao() {
 		return cidadao;
 	}
-	public void setCidadao(Cidadao cidadao) {
+	public void setCidadao(PessoaFisica cidadao) {
 		this.cidadao = cidadao;
 	}
 	public Zona getZona() {
@@ -45,8 +45,5 @@ public class TituloEleitor {
 	public void setStatus(boolean status) {
 		Status = status;
 	}
-	//TESTE$
-	
-	
 
 }

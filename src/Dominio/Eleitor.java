@@ -2,30 +2,30 @@ package Dominio;
 
 import java.util.Date;
 
+import Dominio.enum_.EleitorSituacaoEnum;
 import Dominio.enum_.SexoEnum;
 
-public class Eleitor extends Cidadao {
+public class Eleitor extends PessoaFisica {
 
 	private String titulo;
-	private boolean situacao;
-	private EnderecoEleitoral eleitoral;
+	private EleitorSituacaoEnum situacao;
+	private EnderecoEleitoral enderecoEleitoral;
 	public Eleitor() {}
 	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
-			String numReservista, String titulo, boolean situacao, Zona zona, Secao secao,
+			String numReservista, String titulo, EleitorSituacaoEnum situacao,
 			EnderecoEleitoral eleitoral) {
 		super(nome, dataNascimento, endereco, cpf, rg, sexo, numReservista);
 		this.titulo = titulo;
 		this.situacao = situacao;
-		this.eleitoral = eleitoral;
+		this.enderecoEleitoral = eleitoral;
 	}
 
 	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
-			String titulo, boolean situacao, Zona zona, Secao secao,
-			EnderecoEleitoral eleitoral) {
+			String titulo, EleitorSituacaoEnum situacao, EnderecoEleitoral eleitoral) {
 		super(nome, dataNascimento, endereco, cpf, rg, sexo);
 		this.titulo = titulo;
 		this.situacao = situacao;
-		this.eleitoral = eleitoral;
+		this.enderecoEleitoral = eleitoral;
 	}
 
 	public String getTitulo() {
@@ -36,20 +36,20 @@ public class Eleitor extends Cidadao {
 		this.titulo = titulo;
 	}
 
-	public boolean isSituacao() {
+	public EleitorSituacaoEnum getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(boolean situacao) {
+	public void setSituacao(EleitorSituacaoEnum situacao) {
 		this.situacao = situacao;
 	}
 
 	public EnderecoEleitoral getEleitoral() {
-		return eleitoral;
+		return enderecoEleitoral;
 	}
 
 	public void setEleitoral(EnderecoEleitoral eleitoral) {
-		this.eleitoral = eleitoral;
+		this.enderecoEleitoral = eleitoral;
 	}
 	
 
