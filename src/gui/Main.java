@@ -79,7 +79,7 @@ public static Partido gerarPartido() throws ParseException {
 	
 	
     public static void main(String[]args) throws ParseException{
-    	//ELEITOR
+    	//ELEITOR eee
     	eleitorControlador=new EleitorControlador(eleitoresRepositorio);
     	eleitorControlador.cadastrar(gerarEleitor());
     	eleitorControlador.cadastrar(gerarEleitor());
