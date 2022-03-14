@@ -12,10 +12,11 @@ public class BaseRepositorio<E> implements  IBaseRepositorio<E> {
 		this.bdE=bdE;
 	}
 	@Override
-	public void salvar(E e) {
+	public long salvar(E e) {
 		// TODO Auto-generated method stub
 		if(this.bdE!=null)
 			this.bdE.add(e);	
+		return 0;
 	}
 
 	@Override

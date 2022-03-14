@@ -23,11 +23,7 @@ public class EleitorRepositorio implements IBaseRepositorio<Eleitor>,IEleitorRes
 		}
 		return null;
 	}
-	@Override
-	public ArrayList<Eleitor> listarEleitores(Eleitor eleitor) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 
 	@Override
 	public Eleitor listarPorTitulo(String titulo) {
 		Eleitor eleitorResult=null;
@@ -38,9 +34,10 @@ public class EleitorRepositorio implements IBaseRepositorio<Eleitor>,IEleitorRes
 		return null;
 	}
 	@Override
-	public void salvar(Eleitor e) {
+	public long salvar(Eleitor e) {
 		// TODO Auto-generated method stub
 		this.bdEleitores.add(e);
+		return 0;
 		
 	}
 	@Override

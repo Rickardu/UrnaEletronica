@@ -1,5 +1,6 @@
 package controladores;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 
 import Dominio.Eleitor;
@@ -25,7 +26,7 @@ public class PartidoControlador {
 	}
 
 
-	public  void cadastrar(Partido partido ){	    	 
+	public  void cadastrar(Partido partido ) throws SQLException{	    	 
 		this.baseServico.cadastrar(partido); 
 	    	  
 	    	

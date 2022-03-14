@@ -1,6 +1,7 @@
 package Dominio;
 
-public class Endereco {
+public class Endereco extends BaseEntidade {
+	 
 	private String pais;
 	private String estado;
 	private String cidade;

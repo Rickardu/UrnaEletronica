@@ -1,15 +1,17 @@
 package Dominio;
 
-public class EnderecoEleitoral  {
+import Dominio.enum_.EnderecoEleitoralEnum;
+
+public class EnderecoEleitoral  extends BaseEntidade {
 
 	private String zona;
 	private String secao;
-	private boolean situacao;
+	private EnderecoEleitoralEnum situacao;
 	private Endereco endereco;
 	
 	public EnderecoEleitoral() {}
 	public EnderecoEleitoral(String pais, String estado, String cidade, String bairro, String cep, String numero,
-			String logradouro, String pontoReferencia, String zona,String secao,boolean situacao,Endereco endereco) {
+			String logradouro, String pontoReferencia, String zona,String secao,EnderecoEleitoralEnum situacao,Endereco endereco) {
 		 
 		this.zona=zona;
 		this.secao=secao;
@@ -29,10 +31,10 @@ public class EnderecoEleitoral  {
 	public void setSecao(String secao) {
 		this.secao = secao;
 	}
-	public boolean isSituacao() {
+	public EnderecoEleitoralEnum getSituacao() {
 		return situacao;
 	}
-	public void setSituacao(boolean situacao) {
+	public void setSituacao(EnderecoEleitoralEnum situacao) {
 		this.situacao = situacao;
 	}
 	public Endereco getEndereco() {

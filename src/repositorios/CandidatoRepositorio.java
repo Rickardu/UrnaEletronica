@@ -14,10 +14,11 @@ public class CandidatoRepositorio extends BaseRepositorio<Candidato>    {
 
 	private ArrayList<Candidato> bdCandidatos;
 	@Override
-	public void salvar(Candidato e) {
+	public long salvar(Candidato e) {
 		// TODO Auto-generated method stub
 		
 		this.bdCandidatos.add(e);	
+		return 0;
 	}
 
 	@Override

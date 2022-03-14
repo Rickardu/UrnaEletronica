@@ -3,6 +3,7 @@ package gui;
 import java.util.Date;
 import java.util.Random;
 import java.nio.charset.Charset;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -19,17 +20,19 @@ import Dominio.enum_.SexoEnum;
 import controladores.EleitorControlador;
 import controladores.PartidoControlador;
 import repositorios.EleitorRepositorio;
+import repositorios.EleitorRepositoryJdbc;
+import repositorios.EnderecoEleitoralRepositoryJdbc;
+import repositorios.EnderecoRepositoryJdbc;
 import repositorios.PartidoRepositorio;
 import servicos.EleitorServico;
 import servicos.EnderecoEleitoralServico;
 import servicos.EnderecoServico;
+import util.ConnectionFactory;
 import util.DatetimeExtensions;
 import util.GerardorDados;
 
 public class Main {
-	public static ArrayList<Eleitor> eleitoresBR=new ArrayList<Eleitor>();
-	public static EleitorRepositorio eleitoresRepositorio=new EleitorRepositorio(eleitoresBR);
-	public static EleitorControlador  eleitorControlador=null;	
+	 
 	
 	public static ArrayList<Partido> partidosBR=new ArrayList<Partido>();
 	public static PartidoRepositorio partidosRepositorio=new PartidoRepositorio(partidosBR);
@@ -42,16 +45,18 @@ public class Main {
     	eleitor1.setNome((GerardorDados.gerarNome(6)+" "+GerardorDados.gerarNome(8)).toUpperCase());
     	eleitor1.setDataNascimento(DatetimeExtensions.toDate("20/03/2000"));
     	eleitor1.setCpf(GerardorDados.gerarDocumento(11));
-    	eleitor1.setNumReservista(GerardorDados.gerarDocumento(16));
+    	eleitor1.setNumReservista(GerardorDados.gerarDocumento(15));
     	eleitor1.setRg(GerardorDados.gerarDocumento(8));
     	//define sexo
     	String[] sexos= {"Masculino","Feminino","Outros"};
     	int idxSexo = new Random().nextInt(SexoEnum.values().length);	
     	eleitor1.setSexo(SexoEnum.values()[idxSexo]);
     	eleitor1.setEndereco(EnderecoServico.gerarEndereco());
-    	eleitor1.setEleitoral(EnderecoEleitoralServico.gerarEnderecoEleitoral()); 
+    	eleitor1.setEnderecoEleitoral(EnderecoEleitoralServico.gerarEnderecoEleitoral()); 
     	eleitor1.setTitulo(GerardorDados.gerarDocumento(18));
     	eleitor1.setSituacao(EleitorSituacaoEnum.ativo);
+    	Date date = new Date(System.currentTimeMillis());
+    	eleitor1.setDataCadastro(date);
     	return eleitor1;    	 
 		
 	}
@@ -78,20 +83,26 @@ public static Partido gerarPartido() throws ParseException {
 	
 	
 	
-    public static void main(String[]args) throws ParseException{
+    public static void main(String[]args) throws ParseException, SQLException{
     	//ELEITOR eee
+    	EnderecoRepositoryJdbc enderecoRepositoryJdbc=new EnderecoRepositoryJdbc();
+    	EnderecoEleitoralRepositoryJdbc enderecoEleitoralRepositoryJdbc=new EnderecoEleitoralRepositoryJdbc(enderecoRepositoryJdbc);
+    	EleitorRepositoryJdbc eleitoresRepositorio=new EleitorRepositoryJdbc(enderecoRepositoryJdbc,enderecoEleitoralRepositoryJdbc);
+    	EleitorControlador  eleitorControlador=null;	
+    	
     	eleitorControlador=new EleitorControlador(eleitoresRepositorio);
+    	/*eleitorControlador.cadastrar(gerarEleitor());
     	eleitorControlador.cadastrar(gerarEleitor());
-    	eleitorControlador.cadastrar(gerarEleitor());
-    	eleitorControlador.cadastrar(gerarEleitor());
+    	eleitorControlador.cadastrar(gerarEleitor());*/
     	eleitorControlador.imprimirEleitores();
      
     	//PARTIDO
-    	partidoControlador=new PartidoControlador(partidosRepositorio);
+    /*	partidoControlador=new PartidoControlador(partidosRepositorio);
     	partidoControlador.cadastrar(gerarPartido());
     	partidoControlador.cadastrar(gerarPartido());
     	partidoControlador.cadastrar(gerarPartido());
-    	partidoControlador.imprimirPartidos();
+    	partidoControlador.imprimirPartidos();*/
+    	//ConnectionFactory.createConnection();
 	 
     	
         

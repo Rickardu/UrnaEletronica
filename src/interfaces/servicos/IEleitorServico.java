@@ -1,5 +1,6 @@
 package interfaces.servicos;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,7 +21,7 @@ public interface IEleitorServico {
 			String numReservista, String titulo, 
 			  EleitorSituacaoEnum situacao,
 			EnderecoEleitoral eleitoral);
-	public void cadastrar( Eleitor eleitor);
+	 
 
 	public void alterar(Eleitor eleitorAtual, String nome, 
 			Date dataNascimento, Endereco endereco, String cpf,
@@ -35,6 +36,9 @@ public interface IEleitorServico {
 	public ArrayList<Eleitor> pesquisarPorZonaSecao(String zona, String secao);
 
 	public void suspender(String numTitulo);
-	public void imprimirEleitores();
+	public void imprimirEleitores() throws SQLException;
+
+
+	 
 
 }

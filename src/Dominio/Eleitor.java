@@ -10,22 +10,26 @@ public class Eleitor extends PessoaFisica {
 	private String titulo;
 	private EleitorSituacaoEnum situacao;
 	private EnderecoEleitoral enderecoEleitoral;
+	private Date dataCadastro;
+	
 	public Eleitor() {}
 	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String numReservista, String titulo, EleitorSituacaoEnum situacao,
-			EnderecoEleitoral eleitoral) {
+			EnderecoEleitoral eleitoral,Date dataCadastro) {
 		super(nome, dataNascimento, endereco, cpf, rg, sexo, numReservista);
 		this.titulo = titulo;
 		this.situacao = situacao;
 		this.enderecoEleitoral = eleitoral;
+		this.dataCadastro=dataCadastro;
 	}
 
 	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
-			String titulo, EleitorSituacaoEnum situacao, EnderecoEleitoral eleitoral) {
+			String titulo, EleitorSituacaoEnum situacao, EnderecoEleitoral eleitoral,Date dataCadastro) {
 		super(nome, dataNascimento, endereco, cpf, rg, sexo);
 		this.titulo = titulo;
 		this.situacao = situacao;
 		this.enderecoEleitoral = eleitoral;
+		this.dataCadastro=dataCadastro;
 	}
 
 	public String getTitulo() {
@@ -48,9 +52,21 @@ public class Eleitor extends PessoaFisica {
 		return enderecoEleitoral;
 	}
 
-	public void setEleitoral(EnderecoEleitoral eleitoral) {
-		this.enderecoEleitoral = eleitoral;
+	 
+	public EnderecoEleitoral getEnderecoEleitoral() {
+		return enderecoEleitoral;
 	}
+	public void setEnderecoEleitoral(EnderecoEleitoral enderecoEleitoral) {
+		this.enderecoEleitoral = enderecoEleitoral;
+	}
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	
+	
 	
 
 }
