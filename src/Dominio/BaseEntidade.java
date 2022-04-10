@@ -10,6 +10,16 @@ public class BaseEntidade {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public BaseEntidade(long id) {
+		 
+		this.id = id;
+	}
+	public BaseEntidade() {
+		 
+		
+	}
+	
 	
 
 }

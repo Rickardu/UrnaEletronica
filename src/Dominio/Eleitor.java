@@ -12,25 +12,31 @@ public class Eleitor extends PessoaFisica {
 	private EnderecoEleitoral enderecoEleitoral;
 	private Date dataCadastro;
 	
-	public Eleitor() {}
-	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+	public Eleitor(long id) {
+		super(id);
+	}
+	public Eleitor() {
+		
+	}
+	public Eleitor(long id, String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String numReservista, String titulo, EleitorSituacaoEnum situacao,
 			EnderecoEleitoral eleitoral,Date dataCadastro) {
-		super(nome, dataNascimento, endereco, cpf, rg, sexo, numReservista);
+		super(id,nome, dataNascimento, endereco, cpf, rg, sexo, numReservista);
 		this.titulo = titulo;
 		this.situacao = situacao;
 		this.enderecoEleitoral = eleitoral;
 		this.dataCadastro=dataCadastro;
 	}
 
-	public Eleitor(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+	public Eleitor(long id, String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
 			String titulo, EleitorSituacaoEnum situacao, EnderecoEleitoral eleitoral,Date dataCadastro) {
-		super(nome, dataNascimento, endereco, cpf, rg, sexo);
+		super(id,nome, dataNascimento, endereco, cpf, rg, sexo);
 		this.titulo = titulo;
 		this.situacao = situacao;
 		this.enderecoEleitoral = eleitoral;
 		this.dataCadastro=dataCadastro;
 	}
+ 
 
 	public String getTitulo() {
 		return titulo;

@@ -9,10 +9,16 @@ public class EnderecoEleitoral  extends BaseEntidade {
 	private EnderecoEleitoralEnum situacao;
 	private Endereco endereco;
 	
-	public EnderecoEleitoral() {}
-	public EnderecoEleitoral(String pais, String estado, String cidade, String bairro, String cep, String numero,
+	public EnderecoEleitoral(long id) {
+		super(id);
+	}
+	
+	public EnderecoEleitoral() {		
+	}
+	
+	public EnderecoEleitoral(long id,String pais, String estado, String cidade, String bairro, String cep, String numero,
 			String logradouro, String pontoReferencia, String zona,String secao,EnderecoEleitoralEnum situacao,Endereco endereco) {
-		 
+		super(id); 
 		this.zona=zona;
 		this.secao=secao;
 		this.situacao=situacao;

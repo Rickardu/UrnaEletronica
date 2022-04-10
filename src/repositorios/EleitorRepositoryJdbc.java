@@ -22,11 +22,11 @@ public class EleitorRepositoryJdbc implements IBaseRepositorio<Eleitor>,IEleitor
 	private EnderecoRepositoryJdbc enderecoRepositoryJdbc;
 	private EnderecoEleitoralRepositoryJdbc enderecoEleitoralRepositoryJdbc;
 
-	public EleitorRepositoryJdbc(EnderecoRepositoryJdbc enderecoRepositoryJdbc,EnderecoEleitoralRepositoryJdbc enderecoEleitoralRepositoryJdbc) throws SQLException {
+	public EleitorRepositoryJdbc() throws SQLException {
 
 		this.conn = ConnectionFactory.createConnection();
-		this.enderecoRepositoryJdbc=enderecoRepositoryJdbc;
-		this.enderecoEleitoralRepositoryJdbc=enderecoEleitoralRepositoryJdbc;
+		this.enderecoRepositoryJdbc=new EnderecoRepositoryJdbc();
+		this.enderecoEleitoralRepositoryJdbc=new EnderecoEleitoralRepositoryJdbc();
 	}
 	
 	private long salvarEndereco(Endereco e) throws SQLException {
@@ -149,20 +149,65 @@ public class EleitorRepositoryJdbc implements IBaseRepositorio<Eleitor>,IEleitor
 	}
 
 	@Override
-	public void alterar(Eleitor e) {
-		// TODO Auto-generated method stub
+	public void alterar(Eleitor e) throws SQLException {
+		try {			 
+			 
+			String sqlEleitor = "UPDATE urnaeletronica.eleitor "
+					+ "SET titulo=?,nome=?,dataNascimento=?,"
+					+ "rg=?,sexo=?,reservista=?,situacao=?,idEndereco=?,idEnderecoEleitoral=?,dataCadastro=?"
+					+ "Where cpf=?;";
+			PreparedStatement ps = conn.prepareStatement(sqlEleitor);
+			ps.setString(1, e.getTitulo());
+			ps.setString(2, e.getNome());			
+			ps.setDate(3, new java.sql.Date(e.getDataNascimento().getTime()));
+			ps.setString(4, e.getRg());
+			ps.setString(5, e.getSexo().getDescricao());
+			ps.setString(6, e.getNumReservista());
+			ps.setString(7, e.getSituacao().getDescricao());
+			ps.setLong(8, e.getEndereco().getId());
+			ps.setLong(9, e.getEleitoral().getId());
+			ps.setDate(10, new java.sql.Date(e.getDataCadastro().getTime()));
+			ps.setString(11, e.getCpf());
+			System.out.println(">>ALTERAR:"+e.getNome());
+			int retornoEleitor = ps.executeUpdate();
+			 
+			if (retornoEleitor == 0) {
+				throw new SQLException("Altecao do Eleitor falhou , ID do Eleitor não foi gerado.");
+			}			 
+			
+		} catch (SQLException e2) {
+			System.out.printf("Erro:%s",e2.getMessage());
+			throw new SQLException("Persistencia do Eleitor falhou.");
+		}
 
 	}
 
 	@Override
-	public void remover(Eleitor e) {
-		// TODO Auto-generated method stub
+	public void remover(Eleitor e) throws SQLException {
+		try {			 
+			 
+			String sqlEleitor = "DELETE FROM urnaeletronica.eleitor WHERE cpf=?";
+					 
+			PreparedStatement ps = conn.prepareStatement(sqlEleitor);
+			ps.setString(1, e.getCpf());
+			 
+			System.out.println(">>DELETE "+e.getCpf());
+			int retornoEleitor = ps.executeUpdate();
+			 
+			if (retornoEleitor == 0) {
+				throw new SQLException("Deleção do Eleitor falhou.");
+			}			 
+			
+		} catch (SQLException e2) {
+			System.out.printf("Erro:%s",e2.getMessage());
+			throw new SQLException("Persistencia do Eleitor falhou.");
+		}
 
 	}
 
 	@Override
 	public ArrayList<Eleitor> listarTodos() throws SQLException {
-		String sql="SELECT titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor;";
+		String sql="SELECT idEleitor, titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
 		ResultSet rs = ps.executeQuery();
@@ -170,10 +215,11 @@ public class EleitorRepositoryJdbc implements IBaseRepositorio<Eleitor>,IEleitor
 		ArrayList<Eleitor> eleitores=new ArrayList<Eleitor>();
 		while(rs.next()){
 			Eleitor e=new Eleitor();
-			
+			e.setId(rs.getInt("idEleitor"));
 			e.setTitulo(rs.getString("titulo"));
 			e.setNome(rs.getString("nome"));
-			e.setCpf(rs.getString("cpf"));
+			e.setRg(rs.getString("rg"));
+			e.setCpf(rs.getString("cpf"));			 
 			e.setDataNascimento(rs.getDate("dataNascimento"));
 			e.setSexo(SexoEnum.getEnum(rs.getString("sexo")));
 			e.setNumReservista(rs.getString("reservista"));
@@ -192,15 +238,17 @@ public class EleitorRepositoryJdbc implements IBaseRepositorio<Eleitor>,IEleitor
 
 	@Override
 	public Eleitor listarPorCpf(String cpf) throws SQLException {
-		String sql="SELECT titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor Where cpf=?;";
+		String sql="SELECT idEleitor, titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor Where cpf=?;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, cpf);
 		ResultSet rs = ps.executeQuery();
 		rs.next(); 
 		 
 		Eleitor e=new Eleitor();
+		e.setId(rs.getInt("idEleitor"));
 		e.setTitulo(rs.getString("titulo"));
 		e.setNome(rs.getString("nome"));
+		e.setRg(rs.getString("rg"));
 		e.setCpf(rs.getString("cpf"));
 		e.setDataNascimento(rs.getDate("dataNascimento"));
 		e.setSexo(SexoEnum.getEnum(rs.getString("sexo")));
@@ -216,12 +264,13 @@ public class EleitorRepositoryJdbc implements IBaseRepositorio<Eleitor>,IEleitor
 
 	@Override
 	public Eleitor listarPorTitulo(String titulo) throws SQLException {
-		String sql="SELECT titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor Where titulo=?;";
+		String sql="SELECT idEleitor,titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor Where titulo=?;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, titulo);
 		ResultSet rs = ps.executeQuery();
 		rs.next(); 
 		Eleitor e=new Eleitor();
+		e.setId(rs.getInt("idEleitor"));
 		e.setTitulo(rs.getString("titulo"));
 		e.setNome(rs.getString("nome"));
 		e.setCpf(rs.getString("cpf"));

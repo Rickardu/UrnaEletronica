@@ -21,8 +21,8 @@ public class EnderecoEleitoralRepositoryJdbc implements IBaseRepositorio<Enderec
 
 	private Connection conn;
 	private EnderecoRepositoryJdbc enderecoRepositoryJdbc;
-	public EnderecoEleitoralRepositoryJdbc(EnderecoRepositoryJdbc enderecoRepositoryJdbc) throws SQLException {
-		this.enderecoRepositoryJdbc=enderecoRepositoryJdbc;
+	public EnderecoEleitoralRepositoryJdbc() throws SQLException {
+		this.enderecoRepositoryJdbc=new EnderecoRepositoryJdbc();
 		this.conn = ConnectionFactory.createConnection();
 	}
 	
@@ -65,7 +65,7 @@ public class EnderecoEleitoralRepositoryJdbc implements IBaseRepositorio<Enderec
 
 	@Override
 	public ArrayList<EnderecoEleitoral> listarTodos() throws SQLException {
-		String sql="SELECT zona,secao,situacao,idEndereco FROM urnaeletronica.enderecoeleitoral;";
+		String sql="SELECT idEnderecoEleitoral,zona,secao,situacao,idEndereco FROM urnaeletronica.enderecoeleitoral;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
 		ResultSet rs = ps.executeQuery();
@@ -73,6 +73,7 @@ public class EnderecoEleitoralRepositoryJdbc implements IBaseRepositorio<Enderec
 		ArrayList<EnderecoEleitoral> enderecos=new ArrayList<EnderecoEleitoral>();
 		while(rs.next()){
 			EnderecoEleitoral e=new EnderecoEleitoral();
+			e.setId(rs.getInt("idEnderecoEleitoral"));
 			e.setZona(rs.getString("zona"));
 			e.setSecao(rs.getString("secao"));
 			e.setSituacao(EnderecoEleitoralEnum.getEnum(rs.getString("situacao")));
@@ -83,13 +84,13 @@ public class EnderecoEleitoralRepositoryJdbc implements IBaseRepositorio<Enderec
 	}
 	@Override
 	public EnderecoEleitoral consultarPorId(long id) throws SQLException {
-		String sql="SELECT zona,secao,situacao,idEndereco  FROM urnaeletronica.enderecoeleitoral Where idEnderecoEleitoral=?;";
+		String sql="SELECT idEnderecoEleitoral,zona,secao,situacao,idEndereco  FROM urnaeletronica.enderecoeleitoral Where idEnderecoEleitoral=?;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setLong(1, id);
 		ResultSet rs = ps.executeQuery();		 
 		rs.next(); 
 		EnderecoEleitoral e=new EnderecoEleitoral();
-		 
+		e.setId(rs.getInt("idEnderecoEleitoral"));
 		e.setZona(rs.getString("zona"));
 		e.setSecao(rs.getString("secao"));
 		e.setSituacao(EnderecoEleitoralEnum.getEnum(rs.getString("situacao")));

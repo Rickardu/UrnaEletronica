@@ -15,28 +15,25 @@ import Dominio.enum_.SexoEnum;
 
 public interface IEleitorServico {
 	
-	public void cadastrar(String nome, Date dataNascimento, 
-			Endereco endereco, String cpf, 
-			String rg, SexoEnum sexo,
-			String numReservista, String titulo, 
-			  EleitorSituacaoEnum situacao,
-			EnderecoEleitoral eleitoral);
+	public void cadastrar(String nome, Date dataNascimento, Endereco endereco, String cpf, String rg, SexoEnum sexo,
+			String numReservista, String titulo, EleitorSituacaoEnum situacao,
+			EnderecoEleitoral eleitoral,Date dataCadastro) throws SQLException, Exception;
 	 
 
 	public void alterar(Eleitor eleitorAtual, String nome, 
 			Date dataNascimento, Endereco endereco, String cpf,
 			String rg, SexoEnum sexo, String numReservista, String titulo, 
 			EleitorSituacaoEnum situacao,
-			EnderecoEleitoral eleitoral);
+			EnderecoEleitoral eleitoral) throws SQLException, Exception;
 
-	public Eleitor pesquisarPorCpf(String cpf);
+	public Eleitor pesquisarPorCpf(String cpf) throws SQLException, Exception ;
 
 	public Eleitor pesquisaPorRg(String rg);
 
 	public ArrayList<Eleitor> pesquisarPorZonaSecao(String zona, String secao);
 
 	public void suspender(String numTitulo);
-	public void imprimirEleitores() throws SQLException;
+	public void imprimirEleitores() throws SQLException, Exception;
 
 
 	 

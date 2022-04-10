@@ -1,7 +1,7 @@
 package Dominio;
 
 public class Endereco extends BaseEntidade {
-	 
+
 	private String pais;
 	private String estado;
 	private String cidade;
@@ -10,11 +10,18 @@ public class Endereco extends BaseEntidade {
 	private String numero;
 	private String logradouro;
 	private String pontoReferencia;
-	
-	public Endereco() {}
-	public Endereco(String pais, String estado, String cidade, String bairro, String cep, String numero,
+
+	public Endereco(long id) {
+		super(id);
+
+	}
+	public Endereco() {		
+
+	}
+
+	public Endereco(long id,String pais, String estado, String cidade, String bairro, String cep, String numero,
 			String logradouro, String pontoReferencia) {
-		super();
+		super(id);
 		this.pais = pais;
 		this.estado = estado;
 		this.cidade = cidade;
@@ -88,8 +95,5 @@ public class Endereco extends BaseEntidade {
 	public void setPontoReferencia(String pontoReferencia) {
 		this.pontoReferencia = pontoReferencia;
 	}
-	
-	
-	
 
 }

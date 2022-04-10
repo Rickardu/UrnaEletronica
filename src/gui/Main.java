@@ -83,18 +83,38 @@ public static Partido gerarPartido() throws ParseException {
 	
 	
 	
-    public static void main(String[]args) throws ParseException, SQLException{
+    public static void main(String[]args) throws Exception{
     	//ELEITOR eee
     	EnderecoRepositoryJdbc enderecoRepositoryJdbc=new EnderecoRepositoryJdbc();
-    	EnderecoEleitoralRepositoryJdbc enderecoEleitoralRepositoryJdbc=new EnderecoEleitoralRepositoryJdbc(enderecoRepositoryJdbc);
-    	EleitorRepositoryJdbc eleitoresRepositorio=new EleitorRepositoryJdbc(enderecoRepositoryJdbc,enderecoEleitoralRepositoryJdbc);
+    	EnderecoEleitoralRepositoryJdbc enderecoEleitoralRepositoryJdbc=new EnderecoEleitoralRepositoryJdbc();
+    	EleitorRepositoryJdbc eleitoresRepositorio=new EleitorRepositoryJdbc();
     	EleitorControlador  eleitorControlador=null;	
     	
-    	eleitorControlador=new EleitorControlador(eleitoresRepositorio);
+    	EnderecoEleitoral endEle=enderecoEleitoralRepositoryJdbc.consultarPorId(6);    	 
+    	Endereco end=enderecoRepositoryJdbc.consultarPorId(11);
+    	
+    	EleitorServico eleitorServico= new EleitorServico();
+    	eleitorServico.cadastrar(new Eleitor());
+    	/*Eleitor eleitor= eleitorServico.pesquisarPorCpf("22151029164");
+    	System.out.println("Nome:"+eleitor.getNome());
+    	System.out.println("RG:"+eleitor.getRg());*/
+    	
+    	
+    	/*eleitor.setEndereco(end);
+    	eleitor.setEnderecoEleitoral(endEle);
+    	eleitor.setNome("Fulano da Silva");
+    	eleitor.setSexo(SexoEnum.Masculino);
+    	eleitor.setDataNascimento(DatetimeExtensions.toDate("02/08/1995"));
+    	eleitorServico.alterar(eleitor);*/
+    	
+    	/*Eleitor eleitorRemove= new Eleitor();
+    	eleitorRemove.setCpf("96771209717");
+    	eleitorServico.remover(eleitorRemove);*/
+    	//eleitorControlador=new EleitorControlador(eleitoresRepositorio);
     	/*eleitorControlador.cadastrar(gerarEleitor());
     	eleitorControlador.cadastrar(gerarEleitor());
     	eleitorControlador.cadastrar(gerarEleitor());*/
-    	eleitorControlador.imprimirEleitores();
+    	//eleitorControlador.imprimirEleitores();
      
     	//PARTIDO
     /*	partidoControlador=new PartidoControlador(partidosRepositorio);
@@ -102,7 +122,7 @@ public static Partido gerarPartido() throws ParseException {
     	partidoControlador.cadastrar(gerarPartido());
     	partidoControlador.cadastrar(gerarPartido());
     	partidoControlador.imprimirPartidos();*/
-    	//ConnectionFactory.createConnection();
+    	//ConnectionFactory.createConnection();22151029164
 	 
     	
         
