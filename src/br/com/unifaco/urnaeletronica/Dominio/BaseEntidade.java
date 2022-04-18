@@ -1,4 +1,4 @@
-package Dominio;
+package br.com.unifaco.urnaeletronica.Dominio;
 
 public class BaseEntidade {
 	private long id;
