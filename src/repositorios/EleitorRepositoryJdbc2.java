@@ -31,6 +31,8 @@ public class EleitorRepositoryJdbc2 implements IBaseRepositorio<Eleitor>, IEleit
 			String sqlEleitor = "INSERT INTO urnaeletronica.eleitor"
 					+ "(titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro)"
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+			
+			
 			PreparedStatement ps = conn.prepareStatement(sqlEleitor, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, e.getTitulo());
 			ps.setString(2, e.getNome());
@@ -40,13 +42,13 @@ public class EleitorRepositoryJdbc2 implements IBaseRepositorio<Eleitor>, IEleit
 			ps.setString(6, e.getSexo().getDescricao());
 			ps.setString(7, e.getNumReservista());
 			ps.setString(8, e.getSituacao().getDescricao());
-			ps.setLong(9, 1);
-			ps.setLong(10, 1);
+			ps.setLong(9, 100);//enderecoId
+			ps.setLong(10, 100);//enderecoEleitoralId
 			ps.setDate(11, new java.sql.Date(e.getDataCadastro().getTime()));
 
 			// Executa a instrução
 			int retornoEleitor = ps.executeUpdate();
-
+			System.out.println("ID_ELEITOR:"+retornoEleitor);
 			if (retornoEleitor == 0) {
 				throw new SQLException("Persistencia do Eleitor falhou , ID do Eleitor não foi gerado.");
 			}

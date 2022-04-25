@@ -87,20 +87,27 @@ public static Partido gerarPartido() throws ParseException {
     public static void main(String[]args) throws Exception{
     	//ELEITOR eee
     	 
-    	EleitorControlador  eleitorControlador=null;	
+    	ConnectionFactory cnn = new ConnectionFactory();
+    	/*if(cnn.createConnection()!=null)
+    		System.out.println("Conectado Com sucesso urna eletronica!");
     	
-    	 
+        cnn = new ConnectionFactory();
+    	if(cnn.createConnection("jdbc:mysql://localhost:3306/prog_dois","root","root")!=null)
+    		System.out.println("Conectado Com sucesso prog_dois!");
+    		
+    		*/
     	
-    	 
+    	EleitorControlador  eleitorControlador=null;    	 
+    	eleitorControlador=new EleitorControlador();
+    	Eleitor e =gerarEleitor();  
+    	System.out.println("NOME:"+e.getNome());
+    	System.out.println("CPF:"+e.getCpf());
+    	eleitorControlador.cadastrar(e);
     	
-    	
-    	 
-    	
-    	 
-    	 
-    	 eleitorControlador=new EleitorControlador();
-    	  Eleitor e =gerarEleitor();    	  
-    	  eleitorControlador.cadastrar(e);
+    	Eleitor e1 =gerarEleitor();  
+    	System.out.println("NOME:"+e1.getNome());
+    	System.out.println("CPF:"+e1.getCpf());
+    	eleitorControlador.cadastrar(e1);
     	  
 		
     	  
