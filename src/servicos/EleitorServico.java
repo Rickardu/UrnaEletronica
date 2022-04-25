@@ -18,13 +18,14 @@ import interfaces.servicos.IBaseServico;
 import interfaces.servicos.IEleitorServico;
 import repositorios.EleitorRepositorio;
 import repositorios.EleitorRepositoryJdbc;
+import repositorios.EleitorRepositoryJdbc2;
 
 public class EleitorServico implements IBaseServico<Eleitor>, IEleitorServico {
-	private EleitorRepositoryJdbc eleitorRepositorio;
+	private EleitorRepositoryJdbc2 eleitorRepositorio;
 
 	public EleitorServico() throws SQLException {
 
-		this.eleitorRepositorio = new EleitorRepositoryJdbc();
+		this.eleitorRepositorio = new EleitorRepositoryJdbc2();
 	}
 
 	@Override

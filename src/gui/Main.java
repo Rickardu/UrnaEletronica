@@ -52,8 +52,8 @@ public class Main {
     	String[] sexos= {"Masculino","Feminino","Outros"};
     	int idxSexo = new Random().nextInt(SexoEnum.values().length);	
     	eleitor1.setSexo(SexoEnum.values()[idxSexo]);
-    	eleitor1.setEndereco(EnderecoServico.gerarEndereco());
-    	eleitor1.setEnderecoEleitoral(EnderecoEleitoralServico.gerarEnderecoEleitoral()); 
+    	eleitor1.setEndereco(null);
+    	eleitor1.setEnderecoEleitoral(null); 
     	eleitor1.setTitulo(GerardorDados.gerarDocumento(18));
     	eleitor1.setSituacao(EleitorSituacaoEnum.ativo);
     	Date date = new Date(System.currentTimeMillis());
@@ -86,46 +86,27 @@ public static Partido gerarPartido() throws ParseException {
 	
     public static void main(String[]args) throws Exception{
     	//ELEITOR eee
-    	EnderecoRepositoryJdbc enderecoRepositoryJdbc=new EnderecoRepositoryJdbc();
-    	EnderecoEleitoralRepositoryJdbc enderecoEleitoralRepositoryJdbc=new EnderecoEleitoralRepositoryJdbc();
-    	EleitorRepositoryJdbc eleitoresRepositorio=new EleitorRepositoryJdbc();
+    	 
     	EleitorControlador  eleitorControlador=null;	
     	
-    	EnderecoEleitoral endEle=enderecoEleitoralRepositoryJdbc.consultarPorId(6);    	 
-    	Endereco end=enderecoRepositoryJdbc.consultarPorId(11);
+    	 
     	
     	 
-    	/*Eleitor eleitor= eleitorServico.pesquisarPorCpf("22151029164");
-    	System.out.println("Nome:"+eleitor.getNome());
-    	System.out.println("RG:"+eleitor.getRg());*/
     	
     	
-    	/*eleitor.setEndereco(end);
-    	eleitor.setEnderecoEleitoral(endEle);
-    	eleitor.setNome("Fulano da Silva");
-    	eleitor.setSexo(SexoEnum.Masculino);
-    	eleitor.setDataNascimento(DatetimeExtensions.toDate("02/08/1995"));
-    	eleitorServico.alterar(eleitor);*/
+    	 
     	
     	 
     	 
     	 eleitorControlador=new EleitorControlador();
-    	  Eleitor e =gerarEleitor();
+    	  Eleitor e =gerarEleitor();    	  
     	  eleitorControlador.cadastrar(e);
-    	  for (int i=0 ; i<100000; i++) {
-			 
-			try {
-				e =gerarEleitor();
-		    	  eleitorControlador.cadastrar(e);
-			} catch (Exception e2) {
-				System.out.println(e2.getMessage());
-				i--;
-			}
+    	  
 		
     	  
     	  
-    	  }
-    	 eleitorControlador.imprimirEleitores();
+    	 
+    	 //eleitorControlador.imprimirEleitores();
     	 
     	 
     	// eleitorControlador.buscarPorCpf("55894748086");
