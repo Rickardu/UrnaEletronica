@@ -21,7 +21,10 @@ public class EleitorControlador {
 	public IBaseServico<Eleitor> eleitorServico1 = null;
 	public EleitorServico eleitorServico2 = null;
 
-	public EleitorControlador() {
+	public EleitorControlador() throws SQLException {
+		eleitorServico2=new EleitorServico();
+		eleitorServico1=new EleitorServico();
+		eleitorServico = new EleitorServico();
 
 	}
 
@@ -50,7 +53,8 @@ public class EleitorControlador {
 	
 	public void buscarPorCpf(String cpf) throws SQLException, Exception {
 		 
-		eleitorServico2.pesquisarPorCpf(cpf);
+		Eleitor resultado = eleitorServico2.pesquisarPorCpf(cpf);
+		eleitorServico2.imprimirEleitores(resultado);
 	}
 	 
 

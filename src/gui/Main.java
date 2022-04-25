@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Random;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
@@ -93,8 +94,7 @@ public static Partido gerarPartido() throws ParseException {
     	EnderecoEleitoral endEle=enderecoEleitoralRepositoryJdbc.consultarPorId(6);    	 
     	Endereco end=enderecoRepositoryJdbc.consultarPorId(11);
     	
-    	EleitorServico eleitorServico= new EleitorServico();
-    	eleitorServico.cadastrar(new Eleitor());
+    	 
     	/*Eleitor eleitor= eleitorServico.pesquisarPorCpf("22151029164");
     	System.out.println("Nome:"+eleitor.getNome());
     	System.out.println("RG:"+eleitor.getRg());*/
@@ -107,13 +107,30 @@ public static Partido gerarPartido() throws ParseException {
     	eleitor.setDataNascimento(DatetimeExtensions.toDate("02/08/1995"));
     	eleitorServico.alterar(eleitor);*/
     	
-    	/*Eleitor eleitorRemove= new Eleitor();
-    	eleitorRemove.setCpf("96771209717");
-    	eleitorServico.remover(eleitorRemove);*/
-    	//eleitorControlador=new EleitorControlador(eleitoresRepositorio);
-    	/*eleitorControlador.cadastrar(gerarEleitor());
-    	eleitorControlador.cadastrar(gerarEleitor());
-    	eleitorControlador.cadastrar(gerarEleitor());*/
+    	 
+    	 
+    	 eleitorControlador=new EleitorControlador();
+    	  Eleitor e =gerarEleitor();
+    	  eleitorControlador.cadastrar(e);
+    	  for (int i=0 ; i<100000; i++) {
+			 
+			try {
+				e =gerarEleitor();
+		    	  eleitorControlador.cadastrar(e);
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+				i--;
+			}
+		
+    	  
+    	  
+    	  }
+    	 eleitorControlador.imprimirEleitores();
+    	 
+    	 
+    	// eleitorControlador.buscarPorCpf("55894748086");
+    	 
+    	
     	//eleitorControlador.imprimirEleitores();
      
     	//PARTIDO
