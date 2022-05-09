@@ -85,8 +85,8 @@ public class EleitorRepositoryJdbc2 implements IBaseRepositorio<Eleitor>, IEleit
 			ps.setString(5, e.getSexo().getDescricao());
 			ps.setString(6, e.getNumReservista());
 			ps.setString(7, e.getSituacao().getDescricao());
-			ps.setLong(8, e.getEndereco().getId());
-			ps.setLong(9, e.getEleitoral().getId());
+			ps.setLong(8, 1);
+			ps.setLong(9, 1);
 			ps.setDate(10, new java.sql.Date(e.getDataCadastro().getTime()));
 			ps.setString(11, e.getCpf());
 			System.out.println(">>ALTERAR:" + e.getNome());
@@ -108,7 +108,7 @@ public class EleitorRepositoryJdbc2 implements IBaseRepositorio<Eleitor>, IEleit
 
 			String sqlEleitor = "DELETE FROM urnaeletronica.eleitor WHERE cpf=?";
 
-			PreparedStatement ps = conn.prepareStatement(sqlEleitor);
+			PreparedStatement ps = conn.prepareStatement(sqlEleitor); 
 			ps.setString(1, e.getCpf());
 
 			System.out.println(">>DELETE " + e.getCpf());
@@ -126,7 +126,7 @@ public class EleitorRepositoryJdbc2 implements IBaseRepositorio<Eleitor>, IEleit
 
 	@Override
 	public ArrayList<Eleitor> listarTodos() throws SQLException {
-		String sql = "SELECT idEleitor, titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor;";
+		String sql = "SELECT  idEleitor, titulo,nome,cpf,dataNascimento,rg,sexo,reservista,situacao,idEndereco,idEnderecoEleitoral,dataCadastro FROM urnaeletronica.eleitor;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();

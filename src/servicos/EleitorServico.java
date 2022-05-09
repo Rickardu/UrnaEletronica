@@ -52,15 +52,15 @@ public class EleitorServico implements IBaseServico<Eleitor>, IEleitorServico {
 	@Override
 	public void alterar(Eleitor e) throws SQLException, Exception {
 		try {
-			if (e != null)
+			if (e == null)
 				throw new EleitorException(EleitorExceptionEnum.EleitorInvalido.toString());
 
 			if (e.getCpf() == null || e.getCpf().isBlank() || e.getCpf().isEmpty() || e.getCpf().length() != 11)
 				throw new EleitorException(PessoaFisicaException.CpfInvalido.toString());
 
-			if (e.getTitulo().isBlank() || e.getTitulo().isEmpty() || e.getTitulo() == null
+			/*if (e.getTitulo().isBlank() || e.getTitulo().isEmpty() || e.getTitulo() == null
 					|| e.getTitulo().length() > 5)
-				throw new EleitorException(EleitorExceptionEnum.TituloInvalido.toString());
+				throw new EleitorException(EleitorExceptionEnum.TituloInvalido.toString());*/
 
 			this.eleitorRepositorio.alterar(e);
 
@@ -74,7 +74,7 @@ public class EleitorServico implements IBaseServico<Eleitor>, IEleitorServico {
 	public void remover(Eleitor e) throws SQLException, Exception {
 		try {
 			Eleitor eleitorResultado = this.eleitorRepositorio.listarPorCpf(e.getCpf());
-			if (eleitorResultado != null)
+			if (eleitorResultado == null)
 				throw new EleitorException(EleitorExceptionEnum.EleitorInvalido.toString());
 
 			eleitorRepositorio.remover(eleitorResultado);
@@ -101,10 +101,10 @@ public class EleitorServico implements IBaseServico<Eleitor>, IEleitorServico {
 			System.out.println(">>>Cpf:" + eleitor.getCpf());
 			System.out.println(">>>Titulo:" + eleitor.getTitulo());
 			System.out.println(">>>Situacao:" + eleitor.getSituacao().getDescricao());
-			System.out.println(">>>Estado:" + eleitor.getEleitoral().getEndereco().getEstado());
-			System.out.println(">>>Cidade:" + eleitor.getEleitoral().getEndereco().getCidade());
-			System.out.println(">>>Zona:" + eleitor.getEleitoral().getZona());
-			System.out.println(">>>Secao:" + eleitor.getEleitoral().getSecao());
+			//System.out.println(">>>Estado:" + eleitor.getEleitoral().getEndereco().getEstado());
+		//	System.out.println(">>>Cidade:" + eleitor.getEleitoral().getEndereco().getCidade());
+			//System.out.println(">>>Zona:" + eleitor.getEleitoral().getZona());
+			//System.out.println(">>>Secao:" + eleitor.getEleitoral().getSecao());
 			System.out.println(">>>>>>>>>>>>>>>-------------------------------<<<<<<<<<<<<<");
 
 		}

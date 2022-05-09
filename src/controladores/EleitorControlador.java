@@ -48,6 +48,7 @@ public class EleitorControlador {
 
 	public void remover(String cpf) throws SQLException, Exception {
 		Eleitor e =new Eleitor();
+		e.setCpf(cpf);
 		eleitorServico2.remover(e);
 	}
 	
@@ -55,6 +56,17 @@ public class EleitorControlador {
 		 
 		Eleitor resultado = eleitorServico2.pesquisarPorCpf(cpf);
 		eleitorServico2.imprimirEleitores(resultado);
+	}
+	 
+	
+	public Eleitor colsultarPorCpf(String cpf) throws SQLException, Exception {
+		 
+		Eleitor resultado = eleitorServico2.pesquisarPorCpf(cpf);
+		return resultado;
+	}
+	
+	public void alterarEleitor(Eleitor e) throws SQLException, Exception {
+		eleitorServico2.alterar(e);
 	}
 	 
 

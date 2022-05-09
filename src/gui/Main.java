@@ -108,9 +108,22 @@ public static Partido gerarPartido() throws ParseException {
     	System.out.println("NOME:"+e1.getNome());
     	System.out.println("CPF:"+e1.getCpf());
     	eleitorControlador.cadastrar(e1);
+    	
+    	eleitorControlador.imprimirEleitores();
+    	//System.out.println("CPF ENCONTRADO"); 
+		//eleitorControlador.buscarPorCpf("50048447378");
     	  
+		Eleitor res = eleitorControlador.colsultarPorCpf("50048447378");
+		if(res!=null) {
+			System.out.println(res.getNome());
+			System.out.println(res.getCpf());
+			System.out.println(res.getTitulo());
+			res.setNome("Fulano de Souza");
+			eleitorControlador.alterarEleitor(res);
+		}
 		
-    	  
+		
+		eleitorControlador.remover("35107847166");
     	  
     	 
     	 //eleitorControlador.imprimirEleitores();
