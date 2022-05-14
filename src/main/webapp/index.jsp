@@ -7,7 +7,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.82.0">
-<title>Checkout example · Bootstrap v5.0</title>
+<title>Cadastro Hello</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/checkout/">
@@ -45,36 +45,34 @@
 		<main>
 			<div class="py-5 text-center">
 				<img class="d-block mx-auto mb-4"
-					src="../assets/brand/bootstrap-logo.svg" alt="" width="72"
-					height="57">
-				<h2>CADASTRO</h2>
-				<p class="lead">Below is an example form built entirely with
-					Bootstrap’s form controls. Each required form group has a
-					validation state that can be triggered by attempting to submit the
-					form without completing it.</p>
+					src="./assets/images/logo-hello.png" alt="" width="272"
+					 >
+				<h2>CADASTRO HELLO</h2>
+				<p class="lead">Inserir os dados de cadastro de HELLO</p>
 			</div>
 
-			<div class="row g-5">
+			<div class="row g-5 justify-content-md-center">
 
 				<div class="col-md-7 col-lg-8">
-					<h4 class="mb-3">Hello <%=request.getContextPath()%></h4>
+					 
 					<form class="needs-validation"
 						action="<%=request.getContextPath()%>/HelloServlet"
-						method="get" novalidate>
+						method="post" novalidate>
 						<div class="row g-3">
 							<div class="col-sm-12">
 								<label for="nome" class="form-label">NOME</label> <input
-									type="text" class="form-control" id="nome" placeholder=""
+									type="text" name="nome" class="form-control" id="nome" placeholder=""
 									value="" required>
 								<div class="invalid-feedback">Insira o nome</div>
 								<div class="col-sm-12">
-									<label for="idade" class="form-label">Idade</label> <input
-										type="numeric" class="form-control" id="idade" placeholder=""
+									<label for="idade" class="form-label">Idade</label> 
+									<input
+										type="numeric" name="idade"class="form-control" id="idade" placeholder=""
 										value="" required>
 									<div class="invalid-feedback">Insira a idade</div>
 									<div class="col-sm-12">
 										<label for="cpf" class="form-label">CPF</label> <input
-											type="text" class="form-control" id="cpf" placeholder=""
+											type="text" name="cpf" class="form-control" id="cpf" placeholder=""
 											value="" required>
 										<div class="invalid-feedback">Insira o CPF</div>
 									</div>
@@ -82,7 +80,7 @@
 
 									<hr class="my-4">
 
-									<button class="w-100 btn btn-primary btn-lg" type="submit">Salvar</button>
+									<button class="w-100 btn btn-danger btn-lg" type="submit">Salvar</button>
 					</form>
 				</div>
 			</div>
@@ -92,7 +90,7 @@
 	</div>
 
 
-	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script src="form-validation.js"></script>
 </body>

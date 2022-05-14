@@ -6,8 +6,8 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
 	version="2.2">
 
-	<persistence-unit name="hellosistencia"  transaction-type="RESOURCE_LOCAL">	 
-    <class>br.hello.domain.Hello</class>
+	<persistence-unit name="hellopersistencia"  transaction-type="RESOURCE_LOCAL">	 
+    <class>hello.domain.Hello</class>
     
         
 		<properties>
